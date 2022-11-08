@@ -24,13 +24,12 @@ const Home = () => {
       try {
         const userInfos = await client.fetch(q);
         const user = userInfos[0];
-        return user;
+        setUser(user);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData(query);
-    setUser(user);
   }, []);
 
   return (
@@ -38,8 +37,8 @@ const Home = () => {
       <div className="hidden md:flex h-screen flex-initial ">
         <Sidebar />
       </div>
-      <div className="flex md:hidden flex-row justify-start items-center">
-        <div className="flex justify-even items-center m-5 gap-5 cursor-pointer text-green-900">
+      <div className="flex md:hidden flex-row justify-center items-center">
+        <div className="flex justify-around items-center mx-1 mt-5 gap-10 w-full cursor-pointer text-green-900">
           <HiMenu
             size={30}
             className="cursor-pointe"
@@ -53,7 +52,7 @@ const Home = () => {
             </div>
           </Link>
           <Link to={`user-profile/${user?._id}`}>
-            <div className="cursor.pointer uppercase">Profile</div>
+            <img src={user?.image} className="w-10 rounded-full" alt="user" />
           </Link>
         </div>
       </div>
