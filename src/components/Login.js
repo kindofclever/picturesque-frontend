@@ -24,13 +24,15 @@ const Login = () => {
 
   const onSuccess = async (res) => {
     try {
+      console.log(res.profileObj);
       localStorage.setItem('user', JSON.stringify(res.profileObj));
-      const { imageUrl, name, googleId } = res.profileObj;
+      const { imageUrl, name, googleId, email } = res.profileObj;
       const doc = {
         _id: googleId,
         _type: 'user',
         userName: name,
         image: imageUrl,
+        email,
       };
       await client
         .createIfNotExists(doc)
