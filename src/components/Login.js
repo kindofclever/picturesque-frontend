@@ -60,7 +60,7 @@ const Login = () => {
         <div className="absolute flex flex-col justify-center items-center top-0 bottom-0 right-0 left-0 bg-blackOverlay">
           <div className="p-5 flex justify-center items-center">
             <img src={logo} width="60px" alt="logo" />
-            <div className="text-white text-5xl">Picturesque.</div>
+            <div className="text-white text-5xl">Picturesque</div>
           </div>
           <div className="">
             <GoogleLogin
