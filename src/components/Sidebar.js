@@ -33,7 +33,7 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
         <Link
           onClick={handleClose}
           to="/"
-          className="flex items-center px-5 gap-2 my-5 pt-1 w-210 ">
+          className="flex items-center px-5 my-5 w-210 ">
           <div className=" flex justify-center items-center">
             <img src={logo} width="40px" alt="logo" />
             <div className="text-green-900 text-3xl">Picturesque</div>
@@ -46,12 +46,9 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
             className={({ isActive }) =>
               isActive ? isActiveStyle : isNotActiveStyle
             }>
-            <RiHomeFill className="text-green-900" size={40} />
             Home
+            <RiHomeFill size={15} />
           </NavLink>
-          <h3 className="text-green-900 px-5 text-base 2xl:text-xl">
-            Discover
-          </h3>
           {categories.map((category) => {
             return (
               <NavLink
@@ -60,7 +57,7 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
                 className={({ isActive }) =>
                   isActive ? isActiveStyle : isNotActiveStyle
                 }
-                to={`/category/${category.name}`}>
+                to={`/category/${category.name.toLowerCase()}`}>
                 {category.name}
               </NavLink>
             );
