@@ -17,10 +17,12 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
           value={searchTerm}
           className="placeholder-green-300 w-full outline-none"
           placeholder="Look for..."
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
           onFocus={() => navigate('/search')}
         />
-        <div className="flex gap-3 items-center">
+        <div className="flex  items-center">
           <Link to={`user-profile/${user?._id}`} className="hidden md:block">
             <img
               src={user.image}
@@ -28,8 +30,10 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
               className="w-16 h-12"
             />
           </Link>
-          <Link to="/create-image" className="hidden md:block">
-            <IoMdAdd size={30} className="mr-2" />
+          <Link
+            to="/create-image"
+            className="w-16 h-12 flex justify-center items-center text-green-100 bg-green-900 rounded-tr-lg rounded-br-lg">
+            <IoMdAdd size={30} />
           </Link>
         </div>
       </div>

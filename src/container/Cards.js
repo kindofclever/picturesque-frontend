@@ -18,7 +18,7 @@ const Cards = ({ user }) => {
       <div className="bg-green-100">
         <Navbar
           searchTerm={searchTerm}
-          setSeacrhTerm={setSearchTerm}
+          setSearchTerm={setSearchTerm}
           user={user}
         />
       </div>
@@ -33,7 +33,7 @@ const Cards = ({ user }) => {
             element={
               <SearchBar
                 searchTerm={searchTerm}
-                setSeacrhTerm={setSearchTerm}
+                setSearchTerm={setSearchTerm}
               />
             }
           />
