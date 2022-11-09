@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Sidebar, UserProfile } from '../components';
-import Cards from '../container/Cards';
+import Cards from './Cards';
 import { client } from '../client';
 import logo from '../assets/logo.png';
 import { userQuery } from '../utils/data';
@@ -71,7 +71,11 @@ const Home = () => {
               onClick={() => setSidebarVisible(!sidebarVisible)}
             />
           </div>
-          <Sidebar user={user && user} closeSidebar={setSidebarVisible} />
+          <Sidebar
+            user={user && user}
+            closeSidebar={setSidebarVisible}
+            sidebar={sidebarVisible}
+          />
         </div>
       )}
       <div className="pb-5 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
