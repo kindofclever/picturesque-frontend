@@ -9,16 +9,13 @@ import { userQuery } from '../utils/data';
 import { HiMenu } from 'react-icons/hi';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Routes, Route, Link } from 'react-router-dom';
+import { fetchUserFromLS } from '../utils/fetchUserFromLS';
 
 const Home = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [user, setUser] = useState({});
   const scrollRef = useRef(null);
-
-  const userInfo =
-    localStorage.getItem('user') !== undefined
-      ? JSON.parse(localStorage.getItem('user'))
-      : localStorage.clear();
+  const userInfo = fetchUserFromLS();
 
   useEffect(() => {
     const query = userQuery(userInfo?.googleId);
