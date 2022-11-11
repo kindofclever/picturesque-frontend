@@ -89,3 +89,66 @@ export const allCardsQuery = `*[_type=="card"] | order(_createdAt desc)
     },
   },
 }`;
+
+export const cardDetailQuery = (imgId) => {
+  const query = `*[_type == "card" && _id == '${imgId}']{
+    image{
+      asset->{
+        url
+      }
+    },
+    _id,
+    title, 
+    about,
+    category,
+    destinationUrl,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+   save[]{
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    },
+    comments[]{
+      comment,
+      _key,
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    }
+  }`;
+  return query;
+};
+
+export const cardDetailMoreCardQuery = (img) => {
+  const query = `*[_type == "card" && category == '${img.category}' && _id != '${img._id}' ]{
+    image{
+      asset->{
+        url
+      }
+    },
+    _id,
+    destinationUrl,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+    save[]{
+      _key,
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    },
+  }`;
+  return query;
+};

@@ -50,7 +50,7 @@ const Card = ({ card: { image, postedBy, _id, destinationUrl, save } }) => {
   const deleteThisCard = async (id) => {
     try {
       await client.delete(id);
-      window.location.reload();
+      setTimeout(() => window.location.reload(), 500);
     } catch (error) {
       console.log(error);
     }

@@ -26,7 +26,10 @@ const Cards = ({ user }) => {
         <Routes>
           <Route path="/" element={<ImageFeed />} />
           <Route path="/category/:categoryId" element={<ImageFeed />} />
-          <Route path="/image/:imageId" element={<CardDetails user={user} />} />
+          <Route
+            path="/image-details/:imageId"
+            element={<CardDetails user={user} />}
+          />
           <Route path="/create-image" element={<CreateCard user={user} />} />
           <Route
             path="/search"
