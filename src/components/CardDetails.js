@@ -144,7 +144,7 @@ const CardDetails = ({ user }) => {
                 Do you want to add a comment?
               </label>
               <input
-                placeholder="It will a short time to upload comment"
+                placeholder="It will take a short time to upload comment"
                 name="comment"
                 type="text"
                 value={comment}
