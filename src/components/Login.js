@@ -24,7 +24,6 @@ const Login = () => {
 
   const onSuccess = async (res) => {
     try {
-      console.log(res.profileObj);
       localStorage.setItem('user', JSON.stringify(res.profileObj));
       const { imageUrl, name, googleId, email } = res.profileObj;
       const doc = {

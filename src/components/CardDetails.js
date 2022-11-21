@@ -21,7 +21,6 @@ const CardDetails = ({ user }) => {
     if (query) {
       client.fetch(`${query}`).then((data) => {
         setCardDetails(data[0]);
-        console.log(data);
         if (data[0]) {
           const query1 = cardDetailMoreCardQuery(data[0]);
           client.fetch(query1).then((res) => {
@@ -164,13 +163,13 @@ const CardDetails = ({ user }) => {
           </div>
         </div>
       )}
-      {cards?.length > 0 && (
-        <h2 className="text-center font-bold text-2xl mt-8 mb-4">
-          More like this
-        </h2>
-      )}
-      {cards ? (
-        <MasonryLayout pins={cards} />
+      {cards?.length > 0 ? (
+        <>
+          <h2 className="text-green-900 text-center font-bold text-2xl mt-8 mb-4">
+            More like this
+          </h2>
+          <MasonryLayout cards={cards} />
+        </>
       ) : (
         <Spinner message="Loading more images" />
       )}

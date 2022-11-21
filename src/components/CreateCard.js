@@ -180,7 +180,7 @@ const CreateCard = ({ user }) => {
           </div>
           <div className="flex flex-col">
             <label className=" py-2" htmlFor="category">
-              Wähle ein Thema für deine Anfrage
+              Choose a category
             </label>
             <select
               name="category"
