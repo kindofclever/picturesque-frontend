@@ -90,6 +90,29 @@ export const allCardsQuery = `*[_type=="card"] | order(_createdAt desc)
   },
 }`;
 
+export const feedQuery = `*[_type == "card"] | order(_createdAt desc) {
+  image{
+    asset->{
+      url
+    }
+  },
+      _id,
+      destinationUrl,
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+      save[]{
+        _key,
+        postedBy->{
+          _id,
+          userName,
+          image
+        },
+      },
+    } `;
+
 export const cardDetailQuery = (imgId) => {
   const query = `*[_type == "card" && _id == '${imgId}']{
     image{

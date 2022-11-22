@@ -117,7 +117,7 @@ const Card = ({ card: { image, postedBy, _id, destinationUrl, save } }) => {
                   Link
                 </a>
               )}
-              {postedBy?._id === user.googleId && (
+              {postedBy?._id === user?.googleId && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();

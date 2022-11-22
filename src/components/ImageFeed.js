@@ -42,7 +42,7 @@ const ImageFeed = () => {
 
   if (!cards?.length)
     return (
-      <h2 className="text-green-900">
+      <h2 className="text-green-900 text-center mx-5">
         There are no pictures in this categroy at the moment
       </h2>
     );

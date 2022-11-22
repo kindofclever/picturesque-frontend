@@ -73,10 +73,13 @@ const CardDetails = ({ user }) => {
       {cardDetails && (
         <div
           className="flex flex-col m-auto bg-white text-green-900"
-          style={{ maxWidth: '1500px', borderRadius: '32px' }}>
+          style={{
+            maxWidth: '1500px',
+            borderRadius: '32px',
+          }}>
           <div className="flex justify-center items-center md:items-start flex-initial">
             <img
-              className="rounded-t-3xl rounded-b-lg"
+              className="rounded-lg max-h-[450px] mt-5 "
               src={cardDetails?.image && urlFor(cardDetails?.image).url()}
               alt="user-post"
             />
@@ -99,14 +102,15 @@ const CardDetails = ({ user }) => {
               </a>
             </div>
             <div>
-              <h1 className="text-4xl font-bold break-words mt-3">
+              <h1 className="text-4xl font-bold break-words mt-2">
                 {cardDetails.title}
               </h1>
-              <p className="mt-3">{cardDetails.about}</p>
+              <p className="mt-2">{cardDetails.about}</p>
             </div>
             <Link
               to={`/user-profile/${cardDetails?.postedBy._id}`}
-              className="flex gap-2 mt-5 items-center bg-white rounded-lg ">
+              className="flex gap-2 mt-2 items-center bg-white rounded-lg text-green-900">
+              Posted by:
               <img
                 src={cardDetails?.postedBy.image}
                 className="w-10 h-10 rounded-full"
@@ -114,11 +118,11 @@ const CardDetails = ({ user }) => {
               />
               <p className="font-bold">{cardDetails?.postedBy.userName}</p>
             </Link>
-            <h2 className="mt-5 text-2xl">Comments</h2>
+            <h2 className="mt-2 text-2xl">Comments</h2>
             <div className="max-h-370 overflow-y-auto">
               {cardDetails?.comments?.map((comment) => (
                 <div
-                  className="flex gap-2 mt-5 items-center bg-white rounded-lg"
+                  className="flex gap-2 mt-2 items-center bg-white rounded-lg"
                   key={uuid()}>
                   <img
                     src={comment.postedBy?.image}

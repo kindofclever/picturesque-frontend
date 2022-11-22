@@ -32,7 +32,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
           </Link>
           <Link
             to="/create-image"
-            className="w-16 h-12 flex justify-center items-center text-green-100 bg-green-900 rounded-tr-lg rounded-br-lg">
+            className="w-16 h-12 flex justify-center items-center text-white bg-green-900 rounded-tr-lg rounded-br-lg">
             <IoMdAdd size={30} />
           </Link>
         </div>

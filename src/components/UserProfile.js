@@ -64,12 +64,12 @@ const UserProfile = () => {
       <div className="flex flex-col pb-5">
         <div className="relative flex flex-col mb-7 ">
           <div className="flex flex-col justify-center items-center">
-            <div className="w-full h-[300px] object-cover">
-              <img
+            <div className="w-full h-[150px] object-cover bg-green-900">
+              {/* <img
                 src={profileBackground}
                 className="object-cover h-full w-full"
                 alt="banner"
-              />
+              /> */}
             </div>
             <div className="-mt-20 h-40 w-40 rounded-full bg-white flex justify-center items-center">
               <img
