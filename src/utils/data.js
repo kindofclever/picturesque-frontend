@@ -42,28 +42,28 @@ export const userQuery = (userId) => {
 };
 
 export const searchQuery = (searchTerm) => {
-  const query = `*[_type=="card" && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}'*]{
-    image {
-      asset -> {
-        url
-      }
-    }, 
-    _id,
-    destinationUrl,
-    postedBy -> {
-      _id,
-      userName,
-      image
-    },
-    save[] {
-      _key,
-      postedBy -> {
-        _id, 
-        userName,
-        image
-      },
-    },
-  }`;
+  const query = `*[_type == "card" && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}*']{
+        image{
+          asset->{
+            url
+          }
+        },
+            _id,
+            destinationUrl,
+            postedBy->{
+              _id,
+              userName,
+              image
+            },
+            save[]{
+              _key,
+              postedBy->{
+                _id,
+                userName,
+                image
+              },
+            },
+          }`;
   return query;
 };
 

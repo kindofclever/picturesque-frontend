@@ -41,6 +41,7 @@ const ImageFeed = () => {
   }, [categoryId]);
 
   if (loading) return <Spinner message="Loading images" />;
+
   return <div>{cards && <MasonryLayout cards={cards} />}</div>;
 };
 

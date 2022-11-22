@@ -45,8 +45,8 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
             className={({ isActive }) =>
               isActive ? isActiveStyle : isNotActiveStyle
             }>
+            <RiHomeFill size={22} className="m-1" />
             Home
-            <RiHomeFill size={15} />
           </NavLink>
           {categories.map((category) => {
             return (
@@ -57,6 +57,11 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
                   isActive ? isActiveStyle : isNotActiveStyle
                 }
                 to={`/category/${category.name.toLowerCase()}`}>
+                <img
+                  src={category.image}
+                  className="w-8 h-8 rounded-full shadow-sm"
+                  alt="category"
+                />
                 {category.name}
               </NavLink>
             );
