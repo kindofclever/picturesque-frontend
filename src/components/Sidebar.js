@@ -82,7 +82,7 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
         <Link
           onClick={handleClose}
           to={`/user-profile/${user._id}`}
-          className="flex my-5 ml-5 mb-3 gap-2 items-center text-green-500">
+          className="flex my-5 ml-5 mb-3 gap-2 capitalize items-center text-green-500">
           <img
             src={user.image}
             alt={`${user.userName}'s profile`}

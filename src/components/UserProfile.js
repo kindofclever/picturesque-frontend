@@ -78,7 +78,7 @@ const UserProfile = () => {
                 alt="user"
               />
             </div>
-            <h2 className="text-green-900 font-bold text-3xl 2xl:5xl text-center mt-3">
+            <h2 className="text-green-900 font-bold capitalize text-3xl 2xl:5xl text-center mt-3">
               {user.userName}
             </h2>
             <div className="absolute top-0 z-1 right-0 p-2">
