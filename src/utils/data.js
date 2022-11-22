@@ -152,3 +152,53 @@ export const cardDetailMoreCardQuery = (img) => {
   }`;
   return query;
 };
+
+export const userCreatedCardsQuery = (userId) => {
+  const query = `*[ _type == 'card' && userId == '${userId}'] | order(_createdAt desc){
+    image{
+      asset->{
+        url
+      }
+    },
+    _id,
+    destinationUrl,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+    save[]{
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    },
+  }`;
+  return query;
+};
+
+export const userSavedCardsQuery = (userId) => {
+  const query = `*[_type == 'card' && '${userId}' in save[].userId ] | order(_createdAt desc) {
+    image{
+      asset->{
+        url
+      }
+    },
+    _id,
+    destinationUrl,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+    save[]{
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    },
+  }`;
+  return query;
+};

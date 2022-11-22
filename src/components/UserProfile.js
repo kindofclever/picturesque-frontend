@@ -2,24 +2,27 @@ import React, { useState, useEffect } from 'react';
 
 import {
   userQuery,
-  userSavedCardQuery,
-  userCreatedCardQuery,
+  userSavedCardsQuery,
+  userCreatedCardsQuery,
 } from '../utils/data';
 import { client } from '../client';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 import profileBackground from '../assets/profilebackground.png';
 
-import { AiOutlineLogout } from 'react-icons/ai';
 import { useParams, useNavigate } from 'react-router-dom';
 import { GoogleLogout } from 'react-google-login';
 
-const randomImage = 'https://picsum.photos/1600/900?nature ';
+const activeButtonStyle =
+  'bg-orange-500 text-white font-bold p-2 rounded-full w-20 outline-none';
+const notActiveButtonStyle =
+  'text-green-900 font-bold p-2 rounded-full w-20 outline-none';
+
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [cards, setCards] = useState(null);
   const [text, setText] = useState('Created');
-  const [activeButton, setActiveButton] = useState('Cretaed');
+  const [activeButton, setActiveButton] = useState('created');
   const navigate = useNavigate();
   const { userId } = useParams();
 
@@ -28,6 +31,22 @@ const UserProfile = () => {
 
     client.fetch(query).then((data) => setUser(data[0]));
   }, [userId]);
+
+  useEffect(() => {
+    if (text === 'Created') {
+      const createdPinsQuery = userCreatedCardsQuery(userId);
+
+      client.fetch(createdPinsQuery).then((data) => {
+        setCards(data);
+      });
+    } else {
+      const savedPinsQuery = userSavedCardsQuery(userId);
+
+      client.fetch(savedPinsQuery).then((data) => {
+        setCards(data);
+      });
+    }
+  }, [text, userId]);
 
   if (!user) {
     return <Spinner message="Loading profile..." />;
@@ -70,10 +89,48 @@ const UserProfile = () => {
                   onLogoutSuccess={onSuccess}
                   cookiePolicy={'single_host_origin'}
                   isSignedIn={true}
+                  icon={false}
                 />
               )}
             </div>
           </div>
+          <div className="text-center text-green-900 mb-7 mt-5">
+            <button
+              type="button"
+              onClick={(e) => {
+                setText(e.target.textContent);
+                setActiveButton('created');
+              }}
+              className={`${
+                activeButton === 'created'
+                  ? activeButtonStyle
+                  : notActiveButtonStyle
+              }`}>
+              Created
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                setText(e.target.textContent);
+                setActiveButton('saved');
+              }}
+              className={`${
+                activeButton === 'saved'
+                  ? activeButtonStyle
+                  : notActiveButtonStyle
+              }`}>
+              Saved
+            </button>
+          </div>
+          <div className="px-2">
+            <MasonryLayout cards={cards} />
+          </div>
+
+          {cards?.length === 0 && (
+            <div className="text-green-900 flex justify-center font-bold items-center w-full text-1xl mt-2">
+              No images found... Create or save some posts!
+            </div>
+          )}
         </div>
       </div>
     </div>

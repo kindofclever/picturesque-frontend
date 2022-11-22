@@ -1,26 +1,25 @@
 import React from 'react';
 
 import logo from '../assets/logo.png';
+import { categories } from '../utils/data';
 
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { RiHomeFill } from 'react-icons/ri';
 import { IoIosArrowForward } from 'react-icons/io';
+import { GoogleLogout } from 'react-google-login';
 
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const isNotActiveStyle =
   'flex items-center px-5 gap-3 text-green-500 hover:text-green-900 transition-all duration-300 ease-in-out capitalize';
 const isActiveStyle =
   'flex items-center px-5 gap-3 font-extrabold border-r-2 border-green-900 text-green-900 transition-all duration-300 ease-in-out capitalize';
 
-const categories = [
-  { name: 'Forests', image: '' },
-  { name: 'Mountains', image: '' },
-  { name: 'Water', image: '' },
-  { name: 'Desert', image: '' },
-  { name: 'Jungle', image: '' },
-  { name: 'Islands', image: '' },
-  { name: 'Snow', image: '' },
-];
 const Sidebar = ({ user, closeSidebar, sidebar }) => {
+  const navigate = useNavigate();
+  const onSuccess = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
   const handleClose = () => {
     if (closeSidebar) {
       closeSidebar(!sidebar);
@@ -62,6 +61,16 @@ const Sidebar = ({ user, closeSidebar, sidebar }) => {
               </NavLink>
             );
           })}
+          <div className="ml-5">
+            <GoogleLogout
+              clientId={clientId}
+              buttonText="Sign out"
+              onLogoutSuccess={onSuccess}
+              cookiePolicy={'single_host_origin'}
+              isSignedIn={true}
+              icon={false}
+            />
+          </div>
         </div>
       </div>
       {user && (
