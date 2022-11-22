@@ -87,7 +87,7 @@ const UserProfile = () => {
                   clientId={clientId}
                   buttonText="Sign out"
                   onLogoutSuccess={onSuccess}
-                  cookiePolicy={'single_host_origin'}
+                  cookiePolicy={'https://picturesque-by-sandra.netlify.app/'}
                   isSignedIn={true}
                   icon={false}
                 />

@@ -67,7 +67,7 @@ const Login = () => {
               buttonText="Sign in with Google"
               onSuccess={onSuccess}
               onFailure={onFailure}
-              cookiePolicy={'single_host_origin'}
+              cookiePolicy={'https://picturesque-by-sandra.netlify.app/'}
               isSignedIn={true}
               icon={false}
             />

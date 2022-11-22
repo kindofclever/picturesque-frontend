@@ -88,24 +88,24 @@ const CardDetails = ({ user }) => {
             <div className="flex items-center justify-between">
               <div className="flex gap-2 items-center">
                 <a
-                  href={`${cardDetails.image.asset.url}?dl=`}
+                  href={`${cardDetails?.image.asset.url}?dl=`}
                   download
                   className="bg-secondaryColor p-2 text-xl rounded-full flex items-center justify-center text-dark opacity-75 hover:opacity-100">
                   <MdDownloadForOffline />
                 </a>
               </div>
               <a
-                href={cardDetails.destination}
+                href={cardDetails?.destination}
                 target="_blank"
                 rel="noreferrer">
-                {cardDetails.destination?.slice(8)}
+                {cardDetails?.destination?.slice(8)}
               </a>
             </div>
             <div>
               <h1 className="text-4xl font-bold break-words mt-2">
-                {cardDetails.title}
+                {cardDetails?.title}
               </h1>
-              <p className="mt-2">{cardDetails.about}</p>
+              <p className="mt-2">{cardDetails?.about}</p>
             </div>
             <Link
               to={`/user-profile/${cardDetails?.postedBy._id}`}
@@ -137,7 +137,7 @@ const CardDetails = ({ user }) => {
               ))}
             </div>
             <div className="flex flex-wrap justify-start mt-6 gap-3">
-              <Link to={`/user-profile/${user._id}`}>
+              <Link to={`/user-profile/${user?._id}`}>
                 <img
                   src={user.image}
                   className="w-10 h-10 rounded-full cursor-pointer"
